@@ -42,6 +42,10 @@
   overflow: hidden;
 }
 
+.alert {
+  background-color: rgb(177, 118, 118);
+}
+
 .flex-container--col-1 {
   width: 25%;
   flex-wrap: wrap;

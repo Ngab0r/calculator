@@ -13,7 +13,6 @@ const allowedInputs = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-
 const keyEventHandler = (key) => {
     if (key === 'Enter') { key = '='; }
     if (key === 'Escape') { key = 'C'; }
-    // console.log(key);
     buttons.forEach(item => clickButton(item, key));
     if (checkAllovedInput(key) || key === '=' || key === 'C') {
         inputHandler(key);
@@ -22,13 +21,18 @@ const keyEventHandler = (key) => {
 
 
 const inputHandler = (character) => {
-    if (character === 'x') { character = '*'; }
-    if (character === 'C') { inputs = ''; } else {
-        if (character === '=') { inputs = calculate(inputs); } else {
-            addData(character);
+    if (!((inputs.length > 0) && Number.isNaN(Number(inputs.substr(inputs.length - 1))) && Number.isNaN(Number(character))) || character === 'C') {
+        display.classList.remove('alert');
+        if (character === 'x') { character = '*'; }
+        if (character === 'C') { inputs = ''; } else {
+            if (character === '=') { inputs = calculate(inputs); } else {
+                addData(character);
+            }
         }
+        writeDisplay(inputs);
+    } else {
+        display.classList.add('alert');
     }
-    writeDisplay(inputs);
 }
 
 
