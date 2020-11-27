@@ -5,21 +5,25 @@ let inputs = '';
 const buttons = document.querySelectorAll('.button');
 const allowedInputs = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '.'];
 
-(() => document.addEventListener('keydown', (event) => keyEventHandler(event.key)))();
+(() => {
+    document.addEventListener('keydown', (event) => keyEventHandler(event.key))
+    buttons.forEach(item => item.addEventListener('click', () => inputHandler(item.textContent)))
+})();
 
 const keyEventHandler = (key) => {
-    console.log(key);
     if (key === 'Enter') { key = '='; }
     buttons.forEach(item => clickButton(item, key));
-    console.log(key);
-    if (checkAllovedInput(key)) {
-        writeDisplay(addData(key));
-    } else {
-        if (key === '=') { inputs = calculate(inputs); }
-        else { if (key === 'Backspace') { writeDisplay(removeData()); } }
-    }
+    if (checkAllovedInput(key) || key === '=') {
+        inputHandler(key);
+    } else { if (key === 'Backspace') { writeDisplay(removeData()); } }
 }
 
+
+const inputHandler = (character) => {
+    if (character === '=') { inputs = calculate(inputs); writeDisplay(inputs); } else {
+        writeDisplay(addData(character));
+    }
+}
 
 
 const checkAllovedInput = (key) => allowedInputs.find(item => item === key);
