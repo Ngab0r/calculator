@@ -1,0 +1,70 @@
+.flex-container {
+  border: 1px solid rgb(91, 91, 146);
+  width: 410px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.column {
+  display: flex;
+  margin: 5px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  line-height: 45px;
+  font-size: 30px;
+  border: 1px solid rgb(91, 91, 146);
+  flex-grow: 1;
+}
+.button {
+  width: 80px;
+  transition: box-shadow 300ms;
+}
+
+.button:hover,
+.beforeActive {
+  /* background-color: rgb(152, 214, 230); */
+  box-shadow: 2px 2px 4px black;
+}
+
+.button:active,
+.activated {
+  box-shadow: inset 2px 2px 2px grey;
+}
+
+.display {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  height: 60px;
+  width: 100%;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.flex-container--col-1 {
+  width: 25%;
+  flex-wrap: wrap;
+  display: flex;
+}
+.flex-container--col-3 {
+  flex-wrap: wrap;
+  display: flex;
+  width: 75%;
+}
+.flex-container--col-4 {
+  flex-wrap: wrap;
+  display: flex;
+  width: 100%;
+}
+
+.button--blue {
+  background-color: rgb(30, 117, 218);
+  color: white;
+}
+.button--grey {
+  background-color: rgb(121, 121, 133);
+}
+.button--light-grey {
+  background-color: rgb(200, 200, 202);
+}
