@@ -13,7 +13,7 @@ const allowedInputs = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-
 const keyEventHandler = (key) => {
     if (key === 'Enter') { key = '='; }
     if (key === 'Escape') { key = 'C'; }
-    console.log(key);
+    // console.log(key);
     buttons.forEach(item => clickButton(item, key));
     if (checkAllovedInput(key) || key === '=' || key === 'C') {
         inputHandler(key);
@@ -22,6 +22,7 @@ const keyEventHandler = (key) => {
 
 
 const inputHandler = (character) => {
+    if (character === 'x') { character = '*'; }
     if (character === 'C') { inputs = ''; } else {
         if (character === '=') { inputs = calculate(inputs); } else {
             addData(character);
@@ -39,7 +40,7 @@ const removeData = (key) => inputs = inputs.slice(0, -1);
 const writeDisplay = (somethingToWrite) => display.innerHTML = somethingToWrite;
 
 const clickButton = (button, key) => {
-    if (button.innerHTML === key) { console.log(button); activateButton(button); }
+    if (button.innerHTML === key) { activateButton(button); }
 };
 
 
