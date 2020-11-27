@@ -15,5 +15,5 @@ const calculate = (equation) => {
     console.log(numbers);
     console.log(operation);
     // allowedInputs.find(item => item === key);
-    return numbers.reduce((prev, next, index) => operators[operation[index - 1]](prev, next));
+    return numbers.reduce((prev, next, index) => operators[operation[index - 1]](prev, next)).toString();
 }
